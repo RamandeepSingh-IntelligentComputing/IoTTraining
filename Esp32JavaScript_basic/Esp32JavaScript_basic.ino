@@ -19,8 +19,8 @@ Adafruit_BME280 bme;
 unsigned bmestatus;
 
 //SSID and Password of your WiFi router
-const char* ssid = "Rmn";
-const char* password = "singh1313";
+const char* ssid = "";
+const char* password = "";
 
 AsyncWebServer server(80); //Server on port 80
 
