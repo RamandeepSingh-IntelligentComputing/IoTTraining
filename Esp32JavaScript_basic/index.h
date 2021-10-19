@@ -21,7 +21,7 @@ window.onload = function() {
 setInterval(function() {
   // Call a function repetatively with 5 Second interval
   getData();
-}, 3000); //5000mSeconds update rate
+}, 1000); //5000mSeconds update rate
  
 function getData() {
   var xhttp = new XMLHttpRequest();
@@ -32,7 +32,17 @@ function getData() {
       var ADCValue = this.responseText; 
       values.push(ADCValue);
       timeStamp.push(time);
-      document.getElementById("temp").innerHTML = ADCValue
+      ele = document.getElementById("temp")
+      if(parseInt(ADCValue) < 24){
+        ele.style.color = "BLUE";
+      }
+      else if(parseInt(ADCValue) >24 && parseInt(ADCValue) < 32) {
+        ele.style.color = "GREEN"
+      }
+      else{
+        ele.style.color = "RED"
+      }
+      ele.innerHTML = ADCValue + " <sup>o</sup>C"
     }
   };
   xhttp.open("GET", "readADC", true); 
