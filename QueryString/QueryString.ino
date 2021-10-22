@@ -27,6 +27,8 @@ void setup(){
   });
   
   server.on("/commandCenter", HTTP_GET,handleCommand);
+  //server.on("/readSensor", HTTP_OPTIONS, sendCrossOriginHeader);
+  server.on("/readSensor", HTTP_GET,handleSensorRead);
   server.begin();
 }
 
@@ -47,10 +49,25 @@ void handleCommand(AsyncWebServerRequest *request)
  request->send(200, "text/plain", "Parameters Parsed correctly");
 }
 
+void sendCrossOriginHeader(AsyncWebServerRequest *request){
+    Serial.println(F("sendCORSHeader"));
+ 
+    request->send(204);
+}
+
 void handleSensorRead(AsyncWebServerRequest *request)
 {
+  
   int val = map(analogRead(A0),0,4095,0,100);
-  request->send(200, "text/plain", String(val));
+
+  //Response Header to qualify CORS
+  AsyncWebServerResponse *response = request->beginResponse(200, "text/plain", String(val));
+  response->addHeader("Access-Control-Allow-Origin", "*");
+  response->addHeader("Access-Control-Max-Age", "600");
+  response->addHeader("Access-Control-Allow-Methods", F("PUT,POST,GET,OPTIONS"));
+  response->addHeader("Access-Control-Allow-Headers", "*");
+  request->send(response);
+  
 }
 
 void loop(){
