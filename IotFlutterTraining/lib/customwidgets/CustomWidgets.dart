@@ -31,5 +31,25 @@ class loginwidget extends StatelessWidget {
       ),),
     );
   }
+}
+
+class extendedLoginWidget extends StatelessWidget{
+  Widget login = loginwidget();
+  @override
+  Widget build(BuildContext context) {
+    return (Scaffold(
+      appBar: AppBar(title: Text("Welcome to My Page",
+        style: TextStyle(fontSize: 38,color:Colors.lightGreen),),),
+      body: login,
+      drawer: Drawer(child: Column(mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+        Text("App Name"),
+        Text("Description"),
+        Text("ver 1.0.1"),
+      ],),
+
+      ),
+    ));
+  }
 
 }

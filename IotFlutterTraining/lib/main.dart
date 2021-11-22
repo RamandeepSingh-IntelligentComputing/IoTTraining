@@ -6,7 +6,7 @@ import 'customwidgets/CustomWidgets.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: loginwidget(),
+    home: extendedLoginWidget(),
   ));
 }
 
