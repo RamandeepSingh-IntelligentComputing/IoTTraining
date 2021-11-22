@@ -1,13 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'customwidgets/CustomWidgets.dart';
+
 
 void main() {
   runApp(MaterialApp(
-    home: rootWidget(),
+    home: loginwidget(),
   ));
 }
 
+
+/*
 class rootWidget extends StatelessWidget{
   @override
   build(BuildContext context){
@@ -51,7 +55,6 @@ class myRowWidget extends StatelessWidget
 }
 
 
-/*
 /*class rootWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
