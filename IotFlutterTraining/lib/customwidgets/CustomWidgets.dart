@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+
 
 class loginwidget extends StatelessWidget {
   String useremail ="";
   String password = "";
 
-  void handleLogin()
+  void handleLogin(BuildContext cntx)
   {
-    Fluttertoast.showToast(msg: useremail);
+    //Fluttertoast.showToast(msg: useremail);
   }
 
   @override
@@ -25,7 +25,7 @@ class loginwidget extends StatelessWidget {
             labelText: "Password",
             hintText: "Enter Password"
           ),onChanged:(text)=>{password = text} ,),
-          ElevatedButton(onPressed: handleLogin,
+          ElevatedButton(onPressed: ()=>{handleLogin(context)},
               child: Icon(Icons.login,size: 28,color:Colors.amber,))
         ],
       ),),
@@ -33,8 +33,44 @@ class loginwidget extends StatelessWidget {
   }
 }
 
+class loginwidgetWithController extends StatelessWidget {
+
+  TextEditingController tecEmail = TextEditingController();
+  TextEditingController tecPass = TextEditingController();
+
+  void handleLogin(BuildContext cntx)
+  {
+    //Fluttertoast.showToast(msg:tecEmail.text)
+    ScaffoldMessenger.of(cntx).showSnackBar(
+        SnackBar(content: Text("Welcome ${tecEmail.text}"),duration: Duration(seconds: 3),));
+    tecEmail.text = "";
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      child: Padding(padding: EdgeInsets.all(10),
+        child:Column(mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextField(decoration: InputDecoration(
+                hintText: "Enter Email",
+                labelText: "Email"
+            ),controller: tecEmail),
+            TextField(obscureText: true,
+              decoration: InputDecoration(
+                  labelText: "Password",
+                  hintText: "Enter Password"
+              ),controller: tecPass,),
+            ElevatedButton(onPressed: ()=>{handleLogin(context)},
+                child: Icon(Icons.login,size: 28,color:Colors.amber,))
+          ],
+        ),),
+    );
+  }
+}
+
 class extendedLoginWidget extends StatelessWidget{
-  Widget login = loginwidget();
+  Widget login = loginwidgetWithController();
   @override
   Widget build(BuildContext context) {
     return (Scaffold(
@@ -53,3 +89,4 @@ class extendedLoginWidget extends StatelessWidget{
   }
 
 }
+
