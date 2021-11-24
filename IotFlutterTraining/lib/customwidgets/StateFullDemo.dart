@@ -8,10 +8,10 @@ class _statefulldemostate extends State<statefullDemo> {
 
   String title = "Awefull Demo";
 
-  void updateTitle(String text)
+  void updateTitle()
   {
    setState(() {
-     title = text;
+
    });
   }
 
@@ -21,13 +21,16 @@ class _statefulldemostate extends State<statefullDemo> {
         appBar: AppBar(
           title: Text(title),
         ),
-        body: Padding(
+        body:Column(children: [
+        Padding(
           padding: EdgeInsets.all(10),
           child: Container(
               color: Colors.red,
               child: TextField(
                 decoration: InputDecoration(labelText: "Enter Titile"),
-              onChanged:updateTitle,)),
-        )));
+              onChanged:(text)=>{title = text},)),
+        ),
+          ElevatedButton(onPressed: updateTitle,child: Text("Click"),)
+        ])));
   }
 }
