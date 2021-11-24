@@ -62,7 +62,7 @@ class loginwidgetWithController extends StatelessWidget {
                   hintText: "Enter Password"
               ),controller: tecPass,),
             ElevatedButton(onPressed: ()=>{handleLogin(context)},
-                child: Icon(Icons.login,size: 28,color:Colors.amber,))
+                child: Icon(Icons.login,size: 28,color:Colors.amber,)),
           ],
         ),),
     );
@@ -89,4 +89,3 @@ class extendedLoginWidget extends StatelessWidget{
   }
 
 }
-
