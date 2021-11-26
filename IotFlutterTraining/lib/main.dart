@@ -7,7 +7,7 @@ import 'customwidgets/CustomWidgets.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: lvHome(),
+    home: entryForm(),
   ));
 }
 
