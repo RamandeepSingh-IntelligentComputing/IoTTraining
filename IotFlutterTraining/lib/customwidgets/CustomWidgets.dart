@@ -44,6 +44,7 @@ class loginwidgetWithController extends StatelessWidget {
     ScaffoldMessenger.of(cntx).showSnackBar(
         SnackBar(content: Text("Welcome ${tecEmail.text}"),duration: Duration(seconds: 3),));
     tecEmail.text = "";
+
   }
 
   @override

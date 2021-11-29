@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:iotfluttertraining/customwidgets/CustomWidgets.dart';
+import 'package:iotfluttertraining/globaldefinations/globaldefinations.dart';
+import 'DetailView.dart';
 
-class lvHome extends StatelessWidget{
+/*class lvHome extends StatelessWidget{
   var childList = List<DetailWidget>.generate(1000, (index) =>
       DetailWidget(name:"Test ${index+1}", init:"T${index+1}"));
 
@@ -11,16 +13,22 @@ class lvHome extends StatelessWidget{
         body: ListView(children: childList,)
     ));
   }
-}
+}*/
 
 class DetailWidget extends StatelessWidget{
-  String name="";
-  String init = "";
-  DetailWidget({@required this.name="",@required this.init=""});
-  void serveSnack(BuildContext cntx){
-    ScaffoldMessenger.of(cntx).showSnackBar(
-        SnackBar(content: Text("Welcome ${name}"),
-            duration:Duration(seconds: 1) ,));
+  studentDetails student;
+
+  DetailWidget({required this.student,});
+
+  void serveSnack(BuildContext cntx) async{
+
+    Navigator.push(cntx,
+        MaterialPageRoute(builder: (cntx)=>DetailView(),
+        settings: RouteSettings(arguments: student))).then((value) => {
+      ScaffoldMessenger.of(cntx).showSnackBar(
+          SnackBar(content: Text("Welcome ${student.name}.You've been $value"),
+            duration:Duration(seconds: 3) ,))
+    });
   }
 
   @override
@@ -29,8 +37,8 @@ class DetailWidget extends StatelessWidget{
      child:Row(mainAxisAlignment: MainAxisAlignment.start,
       children: [
       GestureDetector(onTap:(){serveSnack(context);},
-          child:CircleAvatar(radius:40, child: Text(init),)),
-      Text(name,style: TextStyle(fontSize: 28,color: Colors.blueGrey),)
+          child:CircleAvatar(radius:40, child: Text(student.init),)),
+      Text(student.name,style: TextStyle(fontSize: 28,color: Colors.blueGrey),)
     ],))
     );
   }
@@ -47,9 +55,12 @@ class _entryFormState extends State<entryForm>{
 
   TextEditingController name = TextEditingController();
   TextEditingController initials = TextEditingController();
+  TextEditingController college = TextEditingController();
+  TextEditingController branch = TextEditingController();
 
   void updateStudentList(){
-    studentList.add(DetailWidget(name: name.text, init: initials.text));
+    studentList.add(DetailWidget(student: studentDetails.withData(name:name.text,
+        init: initials.text,branch: branch.text,college: college.text),));
     setState(() {
 
     });
@@ -64,10 +75,18 @@ class _entryFormState extends State<entryForm>{
             controller: name,),
         TextField(decoration: InputDecoration(labelText: "Enter Initials"),
             controller: initials,),
+        TextField(decoration: InputDecoration(labelText: "Enter College"),
+          controller: college,),
+        TextField(decoration: InputDecoration(labelText: "Enter Branch"),
+          controller: branch,),
+
         ElevatedButton(onPressed:updateStudentList, child: Text("Click")),
         Expanded(child:ListView.builder(itemCount: studentList.length,
         itemBuilder: (context,index) {
-          return DetailWidget(name: studentList[index].name, init: studentList[index].init);
+          return DetailWidget(student: studentDetails.withData(name: studentList[index].student.name,
+              init:studentList[index].student.init,
+              college: studentList[index].student.college,
+              branch: studentList[index].student.branch));
           },)),
       ],
       )
