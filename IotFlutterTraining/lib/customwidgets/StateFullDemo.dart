@@ -9,6 +9,7 @@ class statefullDemo extends StatefulWidget {
 class _statefulldemostate extends State<statefullDemo> {
 
   String title = "Awefull Demo";
+  List<studentDetails> stl = [];
 
   void updateTitle()
   {
@@ -16,11 +17,9 @@ class _statefulldemostate extends State<statefullDemo> {
 
     //studentDetails st = studentDetails.fromJson(parsedJson);
 
-    List<studentDetails> stl = List.generate(parsedJson.length,
+    stl = List.generate(parsedJson.length,
             (index) => studentDetails.fromJson(parsedJson[index]));
-
     print(stl);
-
     setState(() {
 
    });
@@ -28,23 +27,36 @@ class _statefulldemostate extends State<statefullDemo> {
 
   @override
   Widget build(BuildContext context) {
+
     return (Scaffold(
         appBar: AppBar(
           title: Text(title),
         ),
         body:Column(children: [
-        Padding(
-          padding: EdgeInsets.all(10),
-          child: Container(
-              color: Colors.grey,
-              child: TextField(
-                decoration: InputDecoration(labelText: "Enter Titile"),
-              onChanged:(text)=>{title = text},)),
-        ),
-          ElevatedButton(onPressed: updateTitle,child: Text("Click"),)
+          Expanded(child: ListView.builder(itemCount:stl.length,
+            itemBuilder: (BuildContext context, int index) {
+            return(studentInfoWidget(stl[index]));},
+          )),
+          ElevatedButton(onPressed: updateTitle,child: Text("Fetch Data"),)
         ])));
   }
 }
 
+class studentInfoWidget extends StatelessWidget{
+  studentDetails student;
 
+  studentInfoWidget(this.student);
+
+  @override
+  Widget build(BuildContext context) {
+    return(Card(elevation: 10,shadowColor: Colors.red,
+        child:ListTile(title: Text("${student.name}"),
+          subtitle: Text("${student.course} - ${student.branch} at ${student.college}"),
+          isThreeLine: true,
+          leading: CircleAvatar(child: Text("${student.init}"),radius: 20,),)
+      )
+    );
+  }
+
+}
 

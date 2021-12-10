@@ -60,7 +60,7 @@ class _entryFormState extends State<entryForm>{
 
   void updateStudentList(){
     studentList.add(DetailWidget(student: studentDetails.withData(name:name.text,
-        init: initials.text,branch: branch.text,college: college.text),));
+        init: initials.text,branch: branch.text,college: college.text, pro: null),));
     setState(() {
 
     });
@@ -86,7 +86,7 @@ class _entryFormState extends State<entryForm>{
           return DetailWidget(student: studentDetails.withData(name: studentList[index].student.name,
               init:studentList[index].student.init,
               college: studentList[index].student.college,
-              branch: studentList[index].student.branch));
+              branch: studentList[index].student.branch, pro: null));
           },)),
       ],
       )
