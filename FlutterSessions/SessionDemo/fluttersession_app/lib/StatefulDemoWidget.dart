@@ -48,7 +48,7 @@ class _StatefulWidgetDemoState extends State<StatefulDemoWidget>{
         children: [
         ElevatedButton(onPressed: (){update();}, child: Text("Bule")),
         ElevatedButton(onPressed: (){update();}, child: Text("Red")),
-        ElevatedButton(onPressed: (){update();}, child: Text("Green")),
+        ElevatedButton(onPressed: (){timer.cancel();}, child: Text("Green")),
       ],),
       Center(child:Text(tstring,style: TextStyle(fontSize: 28),)),
     ],),));

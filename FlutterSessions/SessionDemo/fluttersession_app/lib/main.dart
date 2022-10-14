@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttersession_app/StatefulDemoWidget.dart';
+import 'package:fluttersession_app/screen1.dart';
+import 'package:fluttersession_app/screen2.dart';
 
 void main() {
   runApp( MyApp());
@@ -19,12 +21,11 @@ class MyApp extends StatelessWidget {
         home: Scaffold(
           appBar: AppBar(title: Center(child:Text("Login UI"),)),
           drawer: Drawer(child: drawerColumn(context),),
-          body: StatefulDemoWidget()
+          body: screen1(),
         )
     ));
   }
 }
-
 
 class student{
   String name;
