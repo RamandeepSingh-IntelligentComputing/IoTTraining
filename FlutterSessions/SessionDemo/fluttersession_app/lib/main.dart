@@ -5,6 +5,8 @@ import 'package:fluttersession_app/StatefulDemoWidget.dart';
 import 'package:fluttersession_app/screen1.dart';
 import 'package:fluttersession_app/screen2.dart';
 
+import 'globalDef.dart';
+
 void main() {
   runApp( MyApp());
 }
@@ -25,14 +27,6 @@ class MyApp extends StatelessWidget {
         )
     ));
   }
-}
-
-class student{
-  String name;
-  String course;
-
-  student(this.name,this.course);
-
 }
 
 class dynamicStudentList extends StatelessWidget{
@@ -58,7 +52,7 @@ class dynamicStudentList extends StatelessWidget{
 Widget studentRow(student s){
   return(
       ListTile(leading: Icon(Icons.account_circle,size: 30,),title: Text(" ${s.name} "),
-          subtitle: Text("${s.course}"),trailing: ElevatedButton(child: Text("..."),onPressed: (){},))
+          subtitle: Text("${s.collage}"),trailing: ElevatedButton(child: Text("..."),onPressed: (){},))
   );
 }
 

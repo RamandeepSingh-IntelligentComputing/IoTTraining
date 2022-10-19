@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttersession_app/globalDef.dart';
 
 class screen2 extends StatelessWidget{
-  String name;
-  String collage;
-
-  screen2(this.name,this.collage);
+  student st;
+  screen2(this.st);
 
   @override
   Widget build(BuildContext context) {
@@ -13,10 +12,11 @@ class screen2 extends StatelessWidget{
     return(
         Scaffold(appBar: AppBar(title: Text('Screen 2'),),
           body: Container(child:Center(child:Column(children: [
-            Expanded(child: Center(child:Text('Name - ${name}')),),
-            Expanded(child: Center(child:Text('College - ${collage}')),),
+            Expanded(child: Center(child:Text('Name - ${st.name}')),),
+            Expanded(child: Center(child:Text('College - ${st.collage}')),),
             ElevatedButton(onPressed: (){
-              Navigator.pop(context);
+              st.name = "Mr.${st.name}";
+              Navigator.pop(context,st);
             },child: Text('Back'),  )
           ],)
              )),
