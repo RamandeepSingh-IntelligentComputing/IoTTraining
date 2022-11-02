@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttersession_app/IDWidget.dart';
 import 'package:fluttersession_app/StatefulDemoWidget.dart';
 import 'package:fluttersession_app/screen1.dart';
 import 'package:fluttersession_app/screen2.dart';
 
+import 'ColorWidget.dart';
+import 'CounterWidget.dart';
 import 'globalDef.dart';
 
 void main() {
@@ -23,11 +26,28 @@ class MyApp extends StatelessWidget {
         home: Scaffold(
           appBar: AppBar(title: Center(child:Text("Login UI"),)),
           drawer: Drawer(child: drawerColumn(context),),
-          body: screen1(),
+          body: Holder(),
         )
     ));
   }
 }
+
+class Holder extends  StatelessWidget{
+  CounterWidget cw = CounterWidget();
+  @override
+  Widget build(BuildContext context) {
+    return(
+      Container(child:Column(
+        children: [
+         Expanded(child: cw),
+          IDWidget(incr:cw.cws.incr,decr:cw.cws.decr),
+        ],
+      ))
+    );
+  }
+
+}
+
 
 class dynamicStudentList extends StatelessWidget{
 

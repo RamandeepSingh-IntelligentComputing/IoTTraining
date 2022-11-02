@@ -15,8 +15,8 @@ class screen2 extends StatelessWidget{
             Expanded(child: Center(child:Text('Name - ${st.name}')),),
             Expanded(child: Center(child:Text('College - ${st.collage}')),),
             ElevatedButton(onPressed: (){
-              st.name = "Mr.${st.name}";
-              Navigator.pop(context,st);
+              st.name = "#.${st.name}";
+              Navigator.pop(context);
             },child: Text('Back'),  )
           ],)
              )),

@@ -20,7 +20,7 @@ class screen1 extends StatelessWidget{
           ElevatedButton(onPressed: () async {
             student s1 = student(name.text,collage.text);
 
-            await Navigator.push(context,
+             await Navigator.push(context,
                 MaterialPageRoute(builder: (context)=>screen2(s1))
             );
            print("Returned Value ${s1.name}");
