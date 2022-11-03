@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttersession_app/DisplayWidget.dart';
 import 'package:fluttersession_app/IDWidget.dart';
 import 'package:fluttersession_app/StatefulDemoWidget.dart';
 import 'package:fluttersession_app/screen1.dart';
@@ -33,14 +34,16 @@ class MyApp extends StatelessWidget {
 }
 
 class Holder extends  StatelessWidget{
-  CounterWidget cw = CounterWidget();
+  //CounterWidget cw = CounterWidget();
+  DisplayWidget cw = DisplayWidget();
   @override
   Widget build(BuildContext context) {
     return(
       Container(child:Column(
         children: [
          Expanded(child: cw),
-          IDWidget(incr:cw.cws.incr,decr:cw.cws.decr),
+          //IDWidget(incr:cw.cws.incr,decr:cw.cws.decr),
+          IDWidget(display:cw.cws.display,),
         ],
       ))
     );

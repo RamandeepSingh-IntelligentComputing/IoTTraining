@@ -9,16 +9,16 @@ class CounterWidget extends StatefulWidget{
 
 class _CounterWidgetState extends State<CounterWidget>{
   incr(){
-    /*setState(() {
+    setState(() {
       widget.count++;
-    });*/
+    });
     print("Incr called");
   }
 
   decr(){
-    /*setState(() {
+    setState(() {
       widget.count--;
-    });*/
+    });
     print("Decr called");
   }
 
