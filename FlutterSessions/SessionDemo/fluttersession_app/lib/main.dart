@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttersession_app/DisplayWidget.dart';
+import 'package:fluttersession_app/FutureDemo.dart';
 import 'package:fluttersession_app/IDWidget.dart';
 import 'package:fluttersession_app/StatefulDemoWidget.dart';
 import 'package:fluttersession_app/screen1.dart';
@@ -9,6 +10,7 @@ import 'package:fluttersession_app/screen2.dart';
 
 import 'ColorWidget.dart';
 import 'CounterWidget.dart';
+import 'FBuilder.dart';
 import 'globalDef.dart';
 
 void main() {
@@ -27,7 +29,7 @@ class MyApp extends StatelessWidget {
         home: Scaffold(
           appBar: AppBar(title: Center(child:Text("Login UI"),)),
           drawer: Drawer(child: drawerColumn(context),),
-          body: Holder(),
+          body: FBuilder(),
         )
     ));
   }
