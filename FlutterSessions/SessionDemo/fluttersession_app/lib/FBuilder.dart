@@ -12,6 +12,8 @@ class FBuilder extends StatelessWidget{
 
     StudentData s1 = StudentData.empty();
     print(s1.getData().toString());
+    //getStudentList
+    s1.getStudentList().forEach((element) {print(element.toString());});
 
     return(
       FB(context)
