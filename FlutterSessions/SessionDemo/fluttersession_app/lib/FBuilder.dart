@@ -1,6 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttersession_app/httpService.dart';
 import 'package:fluttersession_app/jsonExample.dart';
 
 import 'globalDef.dart';
@@ -10,10 +11,12 @@ class FBuilder extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
 
-    StudentData s1 = StudentData.empty();
-    print(s1.getData().toString());
+    //StudentData s1 = StudentData.empty();
+    //print(s1.getData().toString());
     //getStudentList
-    s1.getStudentList().forEach((element) {print(element.toString());});
+    //s1.getStudentList().forEach((element) {print(element.toString());});
+
+    httpService.getData();
 
     return(
       FB(context)

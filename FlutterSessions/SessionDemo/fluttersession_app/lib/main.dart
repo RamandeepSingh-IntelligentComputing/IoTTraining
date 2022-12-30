@@ -11,6 +11,7 @@ import 'package:fluttersession_app/screen2.dart';
 import 'ColorWidget.dart';
 import 'CounterWidget.dart';
 import 'FBuilder.dart';
+import 'bledemo.dart';
 import 'globalDef.dart';
 
 void main() {
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
         home: Scaffold(
           appBar: AppBar(title: Center(child:Text("Login UI"),)),
           drawer: Drawer(child: drawerColumn(context),),
-          body: FBuilder(),
+          body: bleDemo(),
         )
     ));
   }
