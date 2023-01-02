@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blue/flutter_blue.dart';
 
+import 'Dashboard.dart';
+
 class bleDemo extends StatefulWidget{
   _bleDemoState createState()=>_bleDemoState();
 
@@ -61,6 +63,12 @@ class _bleDemoState extends State<bleDemo>{
             itemBuilder: (BuildContext context,int index){
               return ListTile(
                 title:Text(snapshot.data![index].device.name.length>0 ? snapshot.data![index].device.name : snapshot.data![index].device.id.toString()) ,
+                trailing: ElevatedButton(onPressed: ()=>{
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return BleDashboard(snapshot.data![index].device);
+                  })),
+                },child: Text("Connect")),
               );
             }
             ))
