@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:fluttersession_app/scaffoldWidget.dart';
+
+import 'StatefullWidgetBasic.dart';
+import 'loginPage.dart';
 
 void main() {
   runApp(MainApp());
@@ -7,7 +11,8 @@ void main() {
 Widget MainApp(){
   return(
      MaterialApp(
-      home: login(),
+       debugShowCheckedModeBanner: false,
+      home: BasicStatefullWidget("Basic Statefull Demo "),
     )
   );
 }
