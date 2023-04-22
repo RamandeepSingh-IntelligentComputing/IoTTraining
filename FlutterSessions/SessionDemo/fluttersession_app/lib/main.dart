@@ -3,7 +3,8 @@ import 'package:fluttersession_app/scaffoldWidget.dart';
 
 
 import 'StatefullWidgetBasic.dart';
-import 'WidgetInteractionWithUnnamedRoute/AdvStudentList.dart';
+import 'WidgetInteractionWithNamedRoute/DataCollectionWidget.dart';
+import 'WidgetInteractionWithNamedRoute/AdvStudentList.dart';
 import 'loginPage.dart';
 
 void main() {
@@ -14,7 +15,12 @@ Widget MainApp(){
   return(
      MaterialApp(
        debugShowCheckedModeBanner: false,
-      home: AdvStudentList(),
+      initialRoute: '/',
+      routes: {
+         '/':(context)=> AdvStudentList(),
+        '/DataCollection':(context)=> DataCollectionWidget(),
+      },
+      //home: AdvStudentList(),
     )
   );
 }
