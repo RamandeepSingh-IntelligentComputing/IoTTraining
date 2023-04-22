@@ -9,24 +9,20 @@ class BasicStatefullWidget extends StatefulWidget{
 }
 
 class BasicStatefullWidgetState extends State<BasicStatefullWidget>{
-  late String header = "";
-
-  BasicStatefullWidgetState(){
-    header = widget.header;
-  }
 
   void update(){
+    DateTime dt = DateTime.now();
+
     setState(() {
       widget.header = "Updated Successfully";
     });
-
   }
 
   @override
   Widget build(BuildContext context) {
    return(
     Scaffold(
-    appBar: AppBar(title: Text(header),),
+    appBar: AppBar(title: Text(widget.header),),
     body: Center(child: ElevatedButton(
       onPressed:update,child:Text("Update")
     ),),
